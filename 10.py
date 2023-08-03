@@ -1,5 +1,3 @@
-# Deduce public key from signature
-# 从签名推出公钥
 from random import randint
 from gmssl import sm3, func
 import math
@@ -14,7 +12,6 @@ GY = 0xBC3736A2F4F6779C59BDCEE36B692153D0A9877CC62A474002DF32E52139F0A0
 
 
 def gcd(p, q):
-    '''欧几里得算法求最大公因子'''
     if q > p:
         p, q = q, p
     while (q != 0):
@@ -32,7 +29,7 @@ def xcd(p, n):  # 前提n,p互质
         q = r[0] // r[1]
         r.append(rr)
         s.append(s[0] - q * s[1])
-        t.append(t[0] - q * t[1])  # 边做带余除法边线性表出
+        t.append(t[0] - q * t[1])
         r.pop(0);
         s.pop(0);
         t.pop(0)
@@ -186,8 +183,8 @@ xB, yB = multipoint(GX, GY, dB, a, p)
 print(xB, yB)
 
 print('------------签名------------')
-ID = '202000460007'
-m = 'wangfangqi'
+ID = '202100460096'
+m = 'wangjiayi'
 Z, r, s = sign(ID, dB, xB, yB, m)
 print("数字签名为:(r={},s={})".format(r, s))
 
